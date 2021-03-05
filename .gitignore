@@ -1,0 +1,6 @@
+*.zip
+*private*
+*test*
+emudev/
+*rcm/
+*unfinished*/
