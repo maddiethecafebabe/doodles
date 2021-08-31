@@ -4,3 +4,8 @@
 emudev/
 *rcm/
 *unfinished*/
+steam-store-scraper/*.csv
+steam-store-scraper/*.json
+steam-store-scraper/*.html
+*tegrascript*
+**/target/**

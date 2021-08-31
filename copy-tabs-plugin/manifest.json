@@ -1,0 +1,29 @@
+{
+
+  "manifest_version": 2,
+  "name": "copy-open-tabs",
+  "version": "1.0",
+
+  "description": "Copies the urls of all open tabs to your clipboard",
+
+  "permissions": [
+      "tabs",
+      "clipboardWrite"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/48.png",
+    "default_title": "Copy Open Tabs",
+    "default_popup": "popup/thing.html"
+  },
+
+  "icons": {
+    "48": "icons/48.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "maddie@cafebabe.date"
+    }
+  }
+}

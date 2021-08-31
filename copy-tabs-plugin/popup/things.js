@@ -1,0 +1,1 @@
+document.addEventListener("click", (e) => {browser.tabs.query({}).then((ts) => { return ts.map((t) => t.url).join(";") }, (_) => {}).then((text) => {navigator.clipboard.writeText(text).then((_) => {}, (_) => {}); document.getElementById("button").textContent = "Copied!";}, (_) => {});})
