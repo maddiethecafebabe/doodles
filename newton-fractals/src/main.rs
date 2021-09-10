@@ -22,6 +22,9 @@ impl Fractal {
     fn get_rainbow_buf(width: u32, height: u32, multiplier: f32) -> ImageBuffer<Rgb<u8>, Vec<u8>> {
         let mut buf = image::ImageBuffer::new(width, height);
 
+        // use rayon to iter over buf pixels in parallel
+        // let b: () = &mut *buf;
+
         for (x, y, pixel) in buf.enumerate_pixels_mut() {
             let r = (multiplier * x as f32) as u8;
             let b = (multiplier * y as f32) as u8;
@@ -88,7 +91,7 @@ impl core::ops::Deref for Fractal {
 
 
 fn main() {
-    Fractal::new(2000, 2000, 0.3)
+    Fractal::new(20000, 20000, 0.3)
         .create_newton_fractals()
         .save("fractal.png")
         .unwrap();
