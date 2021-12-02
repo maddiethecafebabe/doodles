@@ -34,14 +34,14 @@ mod tests {
     const TEST_INPUT: &str = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263";
 
     #[test]
-    fn part1_test() {
+    fn day01_part1_test() {
         let nums = Input::from_str(TEST_INPUT);
 
         assert_eq!(part1(&nums.into_num_vec()), 7);
     }
 
     #[test]
-    fn part2_test() {
+    fn day01_part2_test() {
         let nums = Input::from_str(TEST_INPUT);
 
         assert_eq!(part2(&nums.into_num_vec()), 5);
