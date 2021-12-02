@@ -60,6 +60,6 @@ mod tests {
         let mut vm = Vm::new(part2_hooks());
         vm.run_command_stream(cmds.iter());
 
-        assert_eq!(900, 900)
+        assert_eq!(vm.pos_horizontal() * vm.depth(), 900)
     }
 }
