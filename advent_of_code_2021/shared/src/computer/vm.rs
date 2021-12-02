@@ -42,12 +42,12 @@ impl HooksBuilder {
         self
     }
 
-     pub fn down(mut self, f: impl FnMut(&mut VmContext, usize) + 'static) -> Self {
+    pub fn down(mut self, f: impl FnMut(&mut VmContext, usize) + 'static) -> Self {
         self.down = Some(Box::new(f));
         self
     }
 
-      pub fn up(mut self, f: impl FnMut(&mut VmContext, usize) + 'static) -> Self {
+    pub fn up(mut self, f: impl FnMut(&mut VmContext, usize) + 'static) -> Self {
         self.up = Some(Box::new(f));
         self
     }
@@ -76,13 +76,16 @@ impl Vm {
     pub fn new(hooks: VmHooks) -> Self {
         Self {
             ctx: VmContext::new(),
-            hooks
+            hooks,
         }
     }
 
-    pub fn run_command_stream<'a>(&mut self, commands: impl Iterator<Item = &'a Command>) -> &mut Self {
+    pub fn run_command_stream<'a>(
+        &mut self,
+        commands: impl Iterator<Item = &'a Command>,
+    ) -> &mut Self {
         use Command::*;
-        
+
         for cmd in commands {
             match cmd {
                 Forward(x) => (self.hooks.forward)(&mut self.ctx, *x),

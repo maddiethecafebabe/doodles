@@ -1,4 +1,10 @@
-use shared::{Input, Reporter, computer::{commands, vm::{Vm, HooksBuilder, VmHooks}}};
+use shared::{
+    computer::{
+        commands,
+        vm::{HooksBuilder, Vm, VmHooks},
+    },
+    Input, Reporter,
+};
 
 fn part1_hooks() -> VmHooks {
     HooksBuilder::new()
@@ -25,8 +31,8 @@ fn main() {
     let mut vm = Vm::new(part1_hooks());
 
     Reporter::day(2)
-      .part1(|| {
-            vm.run_command_stream(cmds.iter());           
+        .part1(|| {
+            vm.run_command_stream(cmds.iter());
             vm.depth() * vm.pos_horizontal()
         })
         .part2(|| {

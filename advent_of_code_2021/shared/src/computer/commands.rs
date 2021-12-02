@@ -19,13 +19,11 @@ pub enum Command {
     Up(usize),
 }
 
-impl Command {
-
-}
+impl Command {}
 
 impl TryFrom<(&str, &str)> for Command {
     type Error = CommandParseError;
-    
+
     fn try_from(value: (&str, &str)) -> Result<Self, Self::Error> {
         let (opc, arg) = value;
         let arg: usize = arg.parse()?;
@@ -42,7 +40,7 @@ impl TryFrom<(&str, usize)> for Command {
             ("forward", arg) => Self::Forward(arg),
             ("down", arg) => Self::Down(arg),
             ("up", arg) => Self::Up(arg),
-            (s, _) => return Err(CommandParseError::InvalidOpcode(s.to_owned()))
+            (s, _) => return Err(CommandParseError::InvalidOpcode(s.to_owned())),
         };
 
         Ok(r)
@@ -51,11 +49,10 @@ impl TryFrom<(&str, usize)> for Command {
 
 pub fn map_to_commands<'a>(lines: impl Iterator<Item = &'a str>) -> Vec<Command> {
     lines
-        .filter(|l| !l.is_empty())    
+        .filter(|l| !l.is_empty())
         .map(str::split_whitespace)
         .map(|mut s| (s.next().unwrap(), s.next().unwrap()))
         .map(Command::try_from)
         .map(Result::unwrap)
         .collect()
 }
-
